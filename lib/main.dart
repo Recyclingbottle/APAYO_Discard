@@ -1,148 +1,50 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'APAYO',
-      home: Home(),
-    );
-  }
-}
-
-class Home extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('APAYO'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              'images/hospital.jpg',
-              width: 100,
-              height: 100,
+        home: Scaffold(
+            appBar: AppBar(
+              centerTitle: true,
+              title: Text('아파요'),
             ),
-            SizedBox(height: 10),
-            Row(
+            body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Column(
-                  children: [
-                    SizedBox(
-                      width: 100,
-                      height: 100,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SearchPage(),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          '병명 검색',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 16),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.zero,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    SizedBox(
-                      width: 100,
-                      height: 100,
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        child: Text(
-                          '약 복용 알림',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 16),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.zero,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                Container(
+                  //alignment: Alignment.center,
+                  child: Image.asset('hospital.jpg', width: 250, height: 250,),
                 ),
-                SizedBox(width: 10),
-                Column(
-                  children: [
-                    SizedBox(
-                      width: 100,
-                      height: 100,
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        child: Text(
-                          '건강일지 작성',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 16),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.zero,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
+                Container(
+                  //alignment: Alignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Column(
+                        children: [
+                          TextButton(onPressed: (){}, child: Text('병명 검색')),
+                          TextButton(onPressed: (){}, child: Text('건강일지 작성'))
+                        ],
                       ),
-                    ),
-                    SizedBox(height: 10),
-                    SizedBox(
-                      width: 100,
-                      height: 100,
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        child: Text(
-                          '건강일지 목록',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 16),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.zero,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
+                      Column(
+                        children: [
+                          TextButton(onPressed: (){}, child: Text('알림')),
+                          TextButton(onPressed: (){}, child: Text('건강일지 목록'))
+                        ],
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class SearchPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('병명 검색 창'),
-      ),
-      body: Center(
-        child: Text('검색 페이지'),
-      ),
+            )
+        )
     );
   }
 }
