@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:apayo/search_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,41 +11,71 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-            appBar: AppBar(
-              centerTitle: true,
-              title: Text('아파요'),
+      home: const MainPage(),
+    );
+  }
+}
+
+class MainPage extends StatelessWidget {
+  const MainPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('아파요'),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            //alignment: Alignment.center,0
+            child: Image.asset(
+              'hospital.jpg',
+              width: 250,
+              height: 250,
             ),
-            body: Column(
+          ),
+          Container(
+            //alignment: Alignment.center,
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  //alignment: Alignment.center,
-                  child: Image.asset('hospital.jpg', width: 250, height: 250,),
+                Column(
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const SearchPage()),
+                        );
+                      },
+                      child: const Text('병명 검색'),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text('건강일지 작성'),
+                    ),
+                  ],
                 ),
-                Container(
-                  //alignment: Alignment.center,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Column(
-                        children: [
-                          TextButton(onPressed: (){}, child: Text('병명 검색')),
-                          TextButton(onPressed: (){}, child: Text('건강일지 작성'))
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          TextButton(onPressed: (){}, child: Text('알림')),
-                          TextButton(onPressed: (){}, child: Text('건강일지 목록'))
-                        ],
-                      ),
-                    ],
-                  ),
+                Column(
+                  children: [
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text('알림'),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text('건강일지 목록'),
+                    ),
+                  ],
                 ),
               ],
-            )
-        )
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
